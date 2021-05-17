@@ -18,13 +18,18 @@ class GoogleMapApi{
 
     setupListener() {
         document.addEventListener('get-map-center', this.handleMapCenterRequest)
+        document.addEventListener('business-search', this.handleMarkers)
+        document.addEventListener('add-marker', this.handleMarker)
 
     }
 
+
     handleMapCenterRequest = (evt) => {
+        console.log(evt)
         const mapCenter = this.map.getCenter()
         console.log('please be center')
         const responseInfo = { center: mapCenter}
+        console.log(responseInfo)
         const responseEvent = new CustomEvent('get-map-center-response', {detail: responseInfo})
         document.dispatchEvent(responseEvent)
     }
@@ -62,114 +67,17 @@ class GoogleMapApi{
 
                 })
 
+                
+
 
             })
 
-            //list container
-            const listContainer = document.createElement('div');
-            listContainer.setAttribute('class', 'business-container');
-            const classResults = document.querySelector('.classResults')
-            classResults.appendChild(listContainer);
-            console.log('listcontainercreated')
-
-            
-            for ( let i = 0; i < results.length; i++){
-
-                const business = results[i];
-    
-                const lat  = business.geometry.location.lat();
-                const lng  = business.geometry.location.lng();
-                const position = { lat: lat, lng: lng};
-                const name = business.name;
-                const address = business.formatted_address;
-                // const hours = business.opening_hours.isOpen(name); // hours?
-                // phone#
-                // const number = business.getPhoneNumber();
-                // const number = business.formatted_phone_number;
-                // const icon = business.icon;
-                // const image = business.photos[0].getUrl();
-                // const rating = business.rating;
-                // const url = business.photos[0].html_attributions;
-
-                // // list item
-                // const businessItemEl = document.createElement('div');
-                // businessItemEl.setAttribute('class', 'business-item');
-                // listContainer.appendChild(businessItemEl);
-                // console.log('businessitemcreated')
-
-                // // Name
-
-                // const nameEl = document.createElement('h2');
-                // // businessItemEl.setAttribute('class', 'name-item');
-                // businessItemEl.appendChild(nameEl);
-                // nameEl.textContent = name;
-
-                // // address
-
-                // const addressEl = document.createElement('p');
-                // // listContainer.setAttribute('class', 'address-p');
-                // listContainer.appendChild(addressEl);
-                // addressEl.textContent = address;
-
-                // //image works
-
-                // const imageEl = document.createElement('img');
-                // businessItemEl.appendChild(imageEl);
-                // imageEl.setAttribute('src', image)
-
-                // //rating
-
-                // const ratingEl = document.createElement('p');
-                // businessItemEl.appendChild(ratingEl);
-                // ratingEl.textContent = rating + "/5"
-
-
-                
-                // this.createMarker({
-                //     position: position,
-                //     map: this.map,
-                //     title: 'the circus',
-                //     infoWindowContent: `<div><img src=${business.icon} atl="" width="20px" height="20px"></div>
-                //     <div>
-                //     <h3>${business.name}</h3>
-                //     <p>${business.formatted_address}</p>
-                //     <p>${business.formatted_phone_number}</p>
-                //     <p>${business.opening_hours.isOpen(name)}</p>
-                //     <img src=${business.photos[0].getUrl()} atl=" width="50px" height="50px">
-                //     <p> rating: ${business.rating}/5</p>
-                //     </div> `
-                // })
-
-                const marker = new google.maps.Marker({
-
-                    position: position,
-                    map: this.map,
-                    title: 'the circus',
-                   
-                    // label: 'the creative circus',
-                    // draggable: true,
-                });
-
-            
-                const infoWindowContent = `<div><img src=${business.icon} atl="" width="20px" height="20px"></div>
-                                            <div>
-                                            <h3>${business.name}</h3>
-                                            <p>${business.formatted_address}</p>
-                                            <p>${business.formatted_phone_number}</p>
-                                            <p>${business.opening_hours.isOpen(name)}</p>
-                                            <img src=${business.photos[0].getUrl()} atl=" width="50px" height="50px">
-                                            <p> rating: ${business.rating}/5</p>
-                                            </div> `
-                const infoWindow = new google.maps.InfoWindow({
-                 content: infoWindowContent,
-                })
-                marker.addListener('click', () => {
-                    infoWindow.open(this.map, marker)
-                   })
-                   
-
-            }
         }
+    }
+
+    handleMarker = (evt) =>{
+        const markerInfo = evt.detail
+        this.createMarker(markerInfo)
     }
 
     createMarker (options) {
@@ -255,6 +163,10 @@ class GoogleMapApi{
                     
             const mapReadyEvent = new CustomEvent('map-ready')
             document.dispatchEvent(mapReadyEvent)    
+        }
+
+        handleMarkers = (evt) => {
+            console.log(evt.detail)
         }
        
         
