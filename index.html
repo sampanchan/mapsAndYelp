@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<title>GoogleMap</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="dist/css/main.css" />
+
+	
+	</head>
+
+	<body>
+		<div class="container">
+			<form method="get"  name= "business-search" class="api-form" id="form">
+				<p class="message"></p>
+				<label>Map Google</label>
+				<input name="place" id="place" value="" />
+				
+				
+				<button type="submit" class="get">Search</button>
+				<button type="submit" class="get">Clear</button>
+					
+			</form>
+			<div id="map"></div>
+			<div id="places"></div>
+		<div class="classResults"></div>
+		</div>
+			
+			<div class="background"></div>
+		</div>
+		<script src="dist/js/maps.js"></script>
+		<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBN8YgsGRhmpj0vSQlLl5EViZa3MGbrjr8&callback=gMap.ready&libraries=places&v=weekly"
+		async
+	  ></script>
+	  <script src="dist/js/yelp.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="dist/js/main.js"></script>
+	</body>
+</html>

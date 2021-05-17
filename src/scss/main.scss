@@ -1,0 +1,118 @@
+/* 
+==============================================
+CONTENT:	Project Name Here
+AUTHOR:		Your Name Here
+==============================================
+
+TABLE OF CONTENTS:
+
+0. Reset
+1. Main Layout
+2. Content
+
+==============================================
+*/
+
+/* 0. Reset ================================= */
+
+/* 
+If you want to add partials, use Sass Modules via @use:
+@use 'variables';
+
+Usage: partial-name.variable/mixin/function-name:
+background: variables.$primary-color;
+*/
+
+@use 'reset';
+
+/* 1. Main Layout ================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: rgb(46, 48, 50);
+}
+
+/* 2. Content ================================= */
+.container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	
+	>form{
+		display: flex;
+		flex-direction: column;
+		max-width: 200px;
+		color: white;
+		background-color: rgb(11, 175, 235);
+		border-radius: 10px;
+		padding: 10px;
+		width: 500px;
+		>label{
+			font-size: 2em;
+			font-weight: 500;
+		}
+		>input{
+			background: rgb(255, 254, 254);
+			border: none;
+			border-radius:10px ;
+			padding: 20px;
+			margin-bottom: 10px;
+		}
+		>button{
+			background: rgb(34, 58, 165);
+			border: none;
+			border-radius:10px ;
+			padding: 5px;
+			margin-bottom: 10px;
+			color: white;
+		}
+	}
+
+	p{
+		color: rgb(92, 156, 240);
+		font-size: 14px;
+		
+	}
+	// h2{
+	// 	color: white;
+	// }
+	// img{
+	// 	width: 50px;
+	// 	&:nth-child(2)
+	// 	width: 200px;
+	// 	height:auto;
+	// }
+	
+
+	.classResults{
+		text-align: center;
+		background: rgb(220, 205, 236);
+		.business-item{
+		
+		h2{
+			color:white;
+		}
+		p{
+			color: blueviolet;
+		}
+		img{
+			width: 200px;
+			height: auto;
+		}
+	}
+		
+	}
+	
+}
+
+#map{
+	width:100%;
+	height:500px;
+	margin-top: 20px;
+	border:1px solid #ccc
+
+}

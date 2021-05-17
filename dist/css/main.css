@@ -1,0 +1,108 @@
+/* 
+==============================================
+CONTENT:	Project Name Here
+AUTHOR:		Your Name Here
+==============================================
+
+TABLE OF CONTENTS:
+
+0. Reset
+1. Main Layout
+2. Content
+
+==============================================
+*/
+/* 0. Reset ================================= */
+/* 
+If you want to add partials, use Sass Modules via @use:
+@use 'variables';
+
+Usage: partial-name.variable/mixin/function-name:
+background: variables.$primary-color;
+*/
+@use 'reset';
+/* 1. Main Layout ================================= */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #2e3032;
+}
+
+/* 2. Content ================================= */
+.container {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+
+.container > form {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	max-width: 200px;
+	color: white;
+	background-color: #0bafeb;
+	border-radius: 10px;
+	padding: 10px;
+	width: 500px;
+}
+
+.container > form > label {
+	font-size: 2em;
+	font-weight: 500;
+}
+
+.container > form > input {
+	background: #fffefe;
+	border: none;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 10px;
+}
+
+.container > form > button {
+	background: #223aa5;
+	border: none;
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.container p {
+	color: #5c9cf0;
+	font-size: 14px;
+}
+
+.container .classResults {
+	text-align: center;
+	background: #dccdec;
+}
+
+.container .classResults .business-item h2 {
+	color: white;
+}
+
+.container .classResults .business-item p {
+	color: blueviolet;
+}
+
+.container .classResults .business-item img {
+	width: 200px;
+	height: auto;
+}
+
+#map {
+	width: 100%;
+	height: 500px;
+	margin-top: 20px;
+	border: 1px solid #ccc;
+}
+
+/*# sourceMappingURL=main.css.map */
